@@ -20,7 +20,7 @@ router.get('/cities/:page', function(req, res) {
 //Angular 2 Routes
 router.get('/home/:id?', function(req, res) {
 
-    var file = path.resolve(__dirname , '../../client/index.html');
+    var file = path.resolve(process.cwd() , './client/index.html');
     console.log(file)
 
     res.sendFile(file);
