@@ -1,0 +1,26 @@
+<div class="toc three wide column ">
+    <div class="toc bg "></div>
+    <div class="ui vertical inverted sticky menu" style="width: 250px !important; left: 0px; top: 0px;">
+        <div class="item center">
+            <button class="ui icon button large" [routerLink]="['Home']">
+                <i class="icon home"></i>
+            </button>
+        </div>
+        <a class="item" href="#/">
+            <b>Getting Started</b>
+        </a>
+        <a class="item" [routerLink]="['D3IntegrationCheck']" >
+            <b>D3 Integration Check</b>
+        </a>
+        <div class="item">
+            <div class="active  header">Bar Charts</div>
+            <div class="menu">                            
+                <a class="item" [routerLink]="['SimpleBarChart']" >Simple Bar Chart</a>                     
+                <a class="item" [routerLink]="['StackedBarChart']" >Stacked Bar Chart</a>                               
+                <a class="item" [routerLink]="['HierarchicalBarChart']" >Hierarchical Bar Chart</a>                               
+                <a class="item" [routerLink]="['GroupedBarChart']" >Grouped Bar Chart</a>                               
+                <a class="item" [routerLink]="['WaterfallBarChart']" >Waterfall Bar Chart</a>                               
+            </div>
+        </div>
+    </div>	
+</div>  

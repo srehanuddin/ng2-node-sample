@@ -1,6 +1,10 @@
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/sample-app-db', function(err, db){
+
+var dbStr = 'mongodb://test:test@ds017678.mlab.com:17678/sample-ng2-node';
+//var dbStr = 'mongodb://localhost/sample-app-db';
+
+mongoose.connect(dbStr, function(err, db){
   if(err){
     console.log("Can not connect to DB");
     console.log(err);

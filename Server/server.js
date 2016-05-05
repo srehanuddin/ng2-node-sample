@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 app.engine('html', require('ejs').renderFile);
 
 app.use(express.static(__dirname + '/../Client'));
+app.use(express.static(__dirname + '/../node_modules'));
 app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json()); // for parsing application/json
