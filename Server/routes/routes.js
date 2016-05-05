@@ -18,11 +18,12 @@ router.get('/cities/:page', function(req, res) {
 
 
 //Angular 2 Routes
-router.get('/home', function(req, res) {
-    res.sendFile('./../../client/index.html');
-});
 router.get('/home/:id?', function(req, res) {
-    res.sendFile('./../../client/index.html');
+
+    var file = path.resolve(__dirname , '../../client/index.html');
+    console.log(file)
+
+    res.sendFile(file);
 });
 
 
