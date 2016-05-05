@@ -12,7 +12,7 @@ router.get('/initData', function(req, res) {
     controller.initData(req, res);
 });
 
-router.get('/cities/:id?', function(req, res) {
+router.get('/cities/:page', function(req, res) {
     controller.getCities(req, res);
 });
 

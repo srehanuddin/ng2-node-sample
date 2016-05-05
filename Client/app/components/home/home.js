@@ -33,13 +33,41 @@ System.register(["angular2/core", 'angular2/router', 'angular2/http'], function(
                 }
                 HomeComponent.prototype.fetchData = function () {
                     var _this = this;
-                    this.http.request('/cities')
+                    this.http.request('/cities/' + this.page)
                         .subscribe(function (res) {
-                        console.log(res.json());
-                        _this.cities = res.json();
+                        var resObj = res.json();
+                        console.log(resObj);
+                        _this.cities = resObj.data;
+                        _this.totalPages = resObj.totalPages;
                     }, function (err) {
                         console.log(err);
                     });
+                };
+                HomeComponent.prototype.btnNext = function () {
+                    this.page++;
+                    //this.fetchData();
+                    this.router.navigate(['/Home', { page: this.page }]);
+                };
+                HomeComponent.prototype.btnPrevious = function () {
+                    this.page--;
+                    //this.fetchData();
+                    this.router.navigate(['/Home', { page: this.page }]);
+                };
+                HomeComponent.prototype.showPrevious = function () {
+                    if (this.page < 2) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                };
+                HomeComponent.prototype.showNext = function () {
+                    if (this.page < this.totalPages) {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
                 };
                 HomeComponent = __decorate([
                     core_1.Component({
@@ -47,14 +75,15 @@ System.register(["angular2/core", 'angular2/router', 'angular2/http'], function(
                         directives: [],
                         templateUrl: "./app/components/home/home.html"
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, http_1.Http])
+                    __metadata('design:paramtypes', [(typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object, (typeof (_b = typeof router_1.RouteParams !== 'undefined' && router_1.RouteParams) === 'function' && _b) || Object, (typeof (_c = typeof http_1.Http !== 'undefined' && http_1.Http) === 'function' && _c) || Object])
                 ], HomeComponent);
                 return HomeComponent;
+                var _a, _b, _c;
             })();
             exports_1("HomeComponent", HomeComponent);
             CityModel = (function () {
                 function CityModel(name) {
-                    this.name = name;
+                    this.Name = name;
                 }
                 return CityModel;
             })();

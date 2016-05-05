@@ -10,29 +10,13 @@ import { Http } from 'angular2/http';
 })
 export class HomeComponent {
     
-    page : number;
-    
+    page : number; 
+    totalPages : number;
     
     cities = [
         // new CityModel("Test 1"),
         // new CityModel("Test 2"),
         // new CityModel("Test 3"),
-        // new CityModel("Test 4"),
-        // new CityModel("Test 5"),
-        // new CityModel("Test 6"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1"),
-        // new CityModel("Test 1")
     ]
     
     constructor(
@@ -43,25 +27,60 @@ export class HomeComponent {
 
         this.page = Number(params.get('page'));
         
+        
+        
         this.fetchData();
     }
     
     fetchData(){
-        this.http.request('/cities')
+        
+        this.http.request('/cities/' + this.page)
             .subscribe((res)=>{
-                console.log(res.json())
-                this.cities = res.json();
+                
+                let resObj = res.json();                
+                console.log(resObj)                
+                this.cities = resObj.data;
+                this.totalPages = resObj.totalPages;
+                
             }, (err)=>{
                 console.log(err)
-            })
+            });
+    }
+    
+    btnNext(){
+        this.page++;
+        //this.fetchData();
+        this.router.navigate(['/Home', {page: this.page}]);
+    }
+    
+    btnPrevious(){
+        this.page--;
+        //this.fetchData();
+        this.router.navigate(['/Home', {page: this.page}]);
+    }
+    
+    showPrevious(){
+        if(this.page < 2){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    showNext(){
+        if(this.page < this.totalPages){
+            return false;
+        } else {
+            return true;
+        }
     }
     
 }
 
 class CityModel{
-    name : string;
+    Name : string;
     
     constructor(name : string){
-        this.name = name;
+        this.Name = name;
     }
 }

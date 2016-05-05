@@ -76,15 +76,24 @@ controller.getCities = function(req, res){
 
             console.log("Total Records : " + count);
 
+            var page = req.params.page;
+
+            console.log("page" , page);
+
+            var limit = 15;
+            var skip = (page - 1) * limit;
+            var totalPages = Math.ceil(count / limit);
+
             CityModel.find({})
-                .limit(15)
+                .skip(skip)
+                .limit(limit)
                 .exec(function(err, data){
                     if(err){
                         console.log("err in find ", err);
                         res.send({status : false, error : err, message : "Error In Finding Data"})
                         return;
                     }
-                    res.send(data);
+                    res.send({ status : true, data : data, total : count, limit : limit, skip : skip, totalPages : totalPages });
                 })
 
         })
