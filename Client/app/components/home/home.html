@@ -1,6 +1,35 @@
-<div class="ui masthead vertical segment">
-    <div class="ui container">
-        <h2>Home Page</h2>
-        <p>Angular2 & D3 samples</p>
+<section>
+          
+    <div class="ui three column stackable grid">
+        
+        <div *ngFor="#city of cities" class="column">
+            <div class="ui segment">
+                <div class="segment-heading">{{city.name}}, Country Code</div>
+                <div class="segment-text">Conical</div>            
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="ui segment">Content</div>
+        </div>
+        <div class="column">
+            <div class="ui segment">Content</div>
+        </div>
+        <div class="column">
+            <div class="ui segment">Content</div>
+        </div>
+        <div class="column">
+            <div class="ui segment">Content</div>
+        </div>
+        <div class="column">
+            <div class="ui segment">Content</div>
+        </div>
+        <div class="column">
+            <div class="ui segment">Content</div>
+        </div>
     </div>
-</div>
+</section>
+<footer class="center marginTop marginBottom">
+    <button class="ui purple button">Previos</button>
+    <button class="ui purple button">Next</button>
+</footer>

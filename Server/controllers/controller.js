@@ -32,7 +32,15 @@ controller.initData = function(req, res){
 
                 result.forEach(function(doc){
 
-                    var city = new CityModel(doc);
+                    var tmp = {};
+                    var tmpKey = null;
+                    for(var k in doc){
+                        tmpKey = k;
+                        tmpKey = tmpKey.replace(/\ /g,'');
+                        tmp[tmpKey] = doc[k];
+                    }
+
+                    var city = new CityModel(tmp);
                     city.save(function (err, data) {
 
                         if (err) {
@@ -52,6 +60,34 @@ controller.initData = function(req, res){
 
         }
     });
+}
+
+controller.getCities = function(req, res){
+
+    var CityModel = models.CityModel;
+
+    CityModel.count({})
+        .exec(function(err, count){
+            if(err){
+                console.log("err in count ",err);
+                res.send({status : false, error : err, message : "Error In Finding Data"})
+                return;
+            }
+
+            console.log("Total Records : " + count);
+
+            CityModel.find({})
+                .limit(15)
+                .exec(function(err, data){
+                    if(err){
+                        console.log("err in find ", err);
+                        res.send({status : false, error : err, message : "Error In Finding Data"})
+                        return;
+                    }
+                    res.send(data);
+                })
+
+        })
 }
 
 module.exports = controller;

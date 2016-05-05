@@ -7,5 +7,5 @@ import {App} from "./app";
 
 bootstrap(App, [
   ROUTER_PROVIDERS,
-  provide(LocationStrategy, {useClass: HashLocationStrategy})
+  //provide(LocationStrategy, {useClass: HashLocationStrategy})
 ]);

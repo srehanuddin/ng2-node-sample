@@ -1,8 +1,8 @@
 
 var mongoose = require('mongoose');
 
-var dbStr = 'mongodb://test:test@ds017678.mlab.com:17678/sample-ng2-node';
-//var dbStr = 'mongodb://localhost/sample-app-db';
+//var dbStr = 'mongodb://test:test@ds017678.mlab.com:17678/sample-ng2-node';
+var dbStr = 'mongodb://localhost/sample-app-db';
 
 mongoose.connect(dbStr, function(err, db){
   if(err){
@@ -15,14 +15,14 @@ mongoose.connect(dbStr, function(err, db){
 });
 
 var CityModel = mongoose.model('Cities', {
-  'Criteria ID': Number,
+  'CriteriaID': Number,
   'Name': String,
-  'Canonical Name': String,
-  'Parent ID': Number,
-  'Country Code': String,
-  'Target Type': String,
+  'CanonicalName': String,
+  'ParentID': Number,
+  'CountryCode': String,
+  'TargetType': String,
   'Status': String
 });
 
-module.exports.models = module.exports.models || {}
+module.exports.models = module.exports.models || {};
 module.exports.models.CityModel = CityModel;

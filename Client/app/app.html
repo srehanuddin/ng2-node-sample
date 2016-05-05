@@ -1,21 +1,23 @@
-<div class="pusher ui grid ">
-        
-    <side-menu></side-menu>
+<div class="pusher ui container">
     
-    <div class="toc twelve wide column marginLeft">
+    <div class="sixteen wide column">
     
-        <div class="article">
+        <section>
     
-            <div class="ui masthead vertical segment">
+            <header class="ui masthead vertical segment heading">
                 <div class="ui container">
-                    <h1>Angular 2 - D3 Sample App</h1>
+                    <h1 class="center aligned">Cities in the World</h1>
                 </div>
+            </header>
+            
+            <div class="ui masthead vertical segment center">
+                Below is the list of all the cities in the world. Feel free to browse
             </div>
+            
             <br>
-    
-            <router-outlet></router-outlet>
-
-        </div>
+        </section>
+        
+        <router-outlet></router-outlet>
     
     </div>
 
